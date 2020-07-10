@@ -20,15 +20,15 @@ def has_negatives(a):
             table[num] = 0
             opps[-(num)] = 0
         # if key IS in table, check if a positive version is in there also
-        else:
-            table[num] += 1
+        # else:
+        #     table[num] += 1
 
     for key in table:
         if key in opps and key > 0:
             result.append(key)
 
-    print(f"table = {table}")
-    print(f"opps = {opps}")
+    # print(f"table = {table}")
+    # print(f"opps = {opps}")
 
     return result
 
