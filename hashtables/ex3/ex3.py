@@ -2,32 +2,30 @@ def intersection(arrays):
     """
     YOUR CODE HERE
     """
-    # Your code here
-    # create a dictionary for each array in arrays?
-    # or create an array of dictionaries?
+    # go throught just the first array, fill a dict with it
+    # and for the rest just check if it has something in common with intial dict?
 
     length = len(arrays)
-    tempDict = {}
-    # print(f"length = {length}")
     # value count should be equal to length
 
-    for array in arrays:
-        for num in array:
-            # if this key is NOT in the dictionary
-            if num not in tempDict:
-                tempDict[num] = 1
-            # else, it IS in the dictionary, value += 1
-            else:
-                tempDict[num] += 1
-        
-    # print(f"tempDict = {tempDict}")
+    # this is filled with the first array numbers, so matches MUST be in here at first
+    firstDict = {}
     result = []
-    for key in tempDict:
-        if tempDict[key] == length:
-            result.append(key)
+    otherDict = {}
+    # go through each array in arrays
 
-    # print(f"arr = {result}")
-    # for dictionary in listOfDicts:
+    # array 1
+    for thing in arrays[0]:
+        firstDict[thing] = 1
+    
+    # arrays 2-10
+    for i in range(1, length):
+        for num in arrays[i]:
+            if num in firstDict:
+                otherDict[num] = num
+                    
+    for key in otherDict:
+        result.append(key)
 
     return result
 
@@ -61,3 +59,26 @@ if __name__ == "__main__":
 
 # ```
 # [1, 2]
+
+# length = len(arrays)
+#     tempDict = {}
+#     # value count should be equal to length
+
+#     # go through each array in arrays
+#     for i in range(length):
+
+#         # go through each number in current array
+#         for num in arrays[i]:
+#             # if this key is NOT in the dictionary
+#             if num not in tempDict:
+#                 tempDict[num] = 1
+#             # else, it IS in the dictionary, value += 1
+#             else:
+#                 tempDict[num] += 1
+        
+#     result = []
+#     for key in tempDict:
+#         if tempDict[key] == length:
+#             result.append(key)
+
+#     return result
