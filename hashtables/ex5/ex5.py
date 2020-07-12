@@ -6,15 +6,15 @@ def finder(files, queries):
     """
     YOUR CODE HERE
     """
+    
     # Your code here
     result = []
     pathsDict = {}
-    queriesDict = {}
+
 
     # fill in pathsDict with every item in array
     for value in files:
-        path = pathlib.PurePath(value).name
-        
+        path = value.split("/")[-1]
         # value = "home/david/foo.txt"
         # path = "foo.txt"
 
@@ -26,20 +26,10 @@ def finder(files, queries):
         else:
             # print(f"path dupe {value}")
             pathsDict[path].append(value)
-        
     
-    # for query in queries:
-    #     queriesDict[query] = query
-
     for query in queries:
-        # if "foo" in "/bin/foo"
         if query in pathsDict:
-            for value in pathsDict[query]:
-                result.append(value)
-            # result.append(query)
-    
-    # print(f"pathsDict = {pathsDict}")
-    # print(f"queriesDict = {queriesDict}")
+            result += pathsDict[query]
 
     return result
 
