@@ -19,7 +19,7 @@ def reconstruct_trip(tickets, length):
 
     # fill dict with tickets
     for ticket in tickets:
-        print(ticket.source, ticket.destination)
+        # print(ticket.source, ticket.destination)
         ticketsDictionary[ticket.source] = ticket.destination
         # first one should be source = "NONE", last is "NONE" for destination
         if ticket.source == "NONE":
@@ -31,6 +31,16 @@ def reconstruct_trip(tickets, length):
         route[i] = ticketsDictionary[route[i-1]]
         i += 1
         
-    print(ticketsDictionary)
+    # print(ticketsDictionary)
 
     return route
+
+# print("\n--START--")
+# ticket_1 = Ticket("NONE", "PDX")
+# ticket_2 = Ticket("PDX", "DCA")
+# ticket_3 = Ticket("DCA", "NONE")
+
+# tickets = [ticket_1, ticket_2, ticket_3]
+
+# expected = ["PDX", "DCA", "NONE"]
+# print(reconstruct_trip(tickets, 3))
