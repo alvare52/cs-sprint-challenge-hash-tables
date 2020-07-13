@@ -1,4 +1,5 @@
 def intersection(arrays):
+
     """
     YOUR CODE HERE
     """
@@ -11,7 +12,6 @@ def intersection(arrays):
     # this is filled with the first array numbers, so matches MUST be in here at first
     firstDict = {}
     result = []
-    otherDict = {}
     # go through each array in arrays
 
     # array 1
@@ -21,11 +21,13 @@ def intersection(arrays):
     # arrays 2-10
     for i in range(1, length):
         for num in arrays[i]:
-            if num in firstDict:
-                otherDict[num] = num
+            if num in firstDict and firstDict[num] == i:
+                firstDict[num] += 1
                     
-    for key in otherDict:
-        result.append(key)
+    for key in firstDict:
+        if firstDict[key] == length:
+            result.append(key)
+        # result.append(key)
 
     return result
 
@@ -37,11 +39,17 @@ if __name__ == "__main__":
     # arrays.append(list(range(2000000, 3000000)) + [1, 2, 3])
     # arrays.append(list(range(3000000, 4000000)) + [1, 2, 3])
 
-    arrays = [
-        [1, 2, 3, 4, 5],
-        [12, 7, 2, 9, 1],
-        [99, 2, 7, 1,]
-    ]
+    # arrays = [
+    #     [1, 2, 3, 4, 5],
+    #     [12, 7, 2, 9, 1],
+    #     [99, 2, 7, 1,]
+    # ]
+
+    arrays = []
+    arrays.append(list(range(1000000, 2000000)) + [5, 2, 3])
+    arrays.append(list(range(2000000, 3000000)) + [1, 3, 3])
+    arrays.append(list(range(3000000, 4000000)) + [1, 2, 3])
+
 
     print(intersection(arrays))
 
